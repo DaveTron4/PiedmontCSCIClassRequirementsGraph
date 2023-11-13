@@ -1,0 +1,51 @@
+digraph G  {
+    node [shape = record, fontname = "Sans serif", fontsize = "14"];
+    compound = true
+    splines = true
+    ranksep = 0.75
+
+    // CSCI Classes Required
+    CSCI1301[label = "CSCI 1301\nProgramming Principles I"]
+    CSCI1302[label = "CSCI 1302\nProgramming Principles II"]
+    CSCI3300[label = "CSCI 3300\nDatabase Management Systems"]
+    CSCI2900[label = "CSCI 2900\nData Structures"]
+    CSCI4200[label = "CSCI 4200\nAlgorithm Analysis"]
+    CSCI3400[label = "CSCI 3400\nSoftware Development"]
+    CSCI4000[label = "CSCI 4000\nProgramming Languages"]
+    CSCI4950[label = "CSCI 4950\nSenior Capstone"]
+
+    // MATH Classes Required
+    MATH1005[label = "MATH 1005\nIntermediate Algebra" color="#808080" fontcolor="#808080"]
+    MATH1113[label = "MATH 1113\nPrecalculus", color="#808080" fontcolor="#808080"]
+    MATH2450[label = "MATH 2450\nCalculus I"]
+    MATH2450L[label = "MATH 2450\nCalculus I LAB"]
+    MATH2300[label = "MATH 2300\nDiscrete Mathematics"]
+
+    subgraph clusterdsa {
+        label = "Piedmont University's\nComputer Science Track\nAY22-23"
+
+        subgraph clusterrequired {
+            label = ""
+            node [style = filled];
+            styled = filled;
+
+            color = "#FFFFFF"
+  
+            CSCI1301 -> CSCI1302
+            CSCI1302 -> {CSCI3300, CSCI2900, CSCI3400} 
+            CSCI2900 -> CSCI4200
+            CSCI2900 -> CSCI4000
+            MATH2300 -> CSCI4200
+
+            MATH1005 -> MATH1113[color ="#808080"]
+            MATH2450 -> MATH2450L [arrowhead = "none"]
+            MATH2450L -> MATH2300
+            MATH1113 -> MATH2450 [color ="#808080"]
+            MATH2450 -> MATH2300
+
+            CSCI4200 -> CSCI4950[style = invis]
+            CSCI4000 -> CSCI4950[style = invis]
+            
+        }
+    }
+}
